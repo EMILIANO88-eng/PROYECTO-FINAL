@@ -1,0 +1,20 @@
+from p5 import *
+from classes.ciudad import EscenaCiudad
+
+# Solo necesitamos una variable global: nuestra ciudad
+mi_ciudad = None
+
+def setup():
+    global mi_ciudad
+    size(800, 600)
+    # Inicializamos la clase controladora
+    mi_ciudad = EscenaCiudad()
+
+def draw():
+    background(15, 0, 30) # El lienzo negro/morado
+    
+    # Le pedimos a la ciudad que haga su magia
+    mi_ciudad.ejecutar_frame()
+
+if __name__ == '__main__':
+    run()

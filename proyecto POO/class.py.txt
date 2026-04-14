@@ -1,0 +1,21 @@
+from p5 import *
+
+class EntidadMovil:
+    """
+    Esta es la clase 'madre'. 
+    Contiene lo que TODO objeto que se mueve en tu ciudad necesita.
+    """
+    def __init__(self, x, y, velocidad):
+        self.x = x
+        self.y = y
+        self.velocidad = velocidad
+
+    def actualizar_posicion(self, limite_izquierdo):
+        """Mueve el objeto y lo reinicia si sale de pantalla."""
+        self.x -= self.velocidad
+        if self.x < limite_izquierdo:
+            self.resetear()
+
+    def resetear(self):
+        """Cada hijo decidirá cómo reaparecer (Polimorfismo)."""
+        self.x = 850

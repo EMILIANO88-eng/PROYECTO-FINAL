@@ -1,0 +1,30 @@
+from .sky import Sky
+from .building import Building
+from .cloud import Cloud
+
+class EscenaCiudad:
+    """
+    Esta clase es como un director de orquesta. 
+    Sabe quiénes están en la escena y les ordena moverse o dibujarse.
+    """
+    def __init__(self):
+        # Creamos las colecciones de objetos
+        self.estrellas = [Sky() for _ in range(100)]
+        self.nubes = [Cloud() for _ in range(5)]
+        self.edificios = [Building(i * 120) for i in range(10)]
+
+    def ejecutar_frame(self):
+        """Hace todo lo que debe pasar en un frame de segundo."""
+        # 1. Fondo
+        # 2. Actualizar y Dibujar estrellas
+        for s in self.estrellas:
+            s.actualizar_posicion(-10)
+            s.dibujar()
+        # 3. Actualizar y Dibujar nubes
+        for n in self.nubes:
+            n.actualizar_posicion(-200)
+            n.dibujar()
+        # 4. Actualizar y Dibujar edificios
+        for e in self.edificios:
+            e.actualizar_posicion(-200)
+            e.dibujar()
